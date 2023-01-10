@@ -361,7 +361,7 @@ for MP in ${MPS} ; do
         fi
 
         ## check kernel mounts
-        if [ -z "$( awk '$'${MF}' == "'${MP}'" {print $'${MF}'}' "${MTAB}" )" ]; then
+	if [ -z "$( awk '$(NF-4) == "'${MP}'" {print $(NF-4)}' "${MTAB}" )" ]; then
         ## if a softlink is not an adequate replacement
         	if [ -z "$LINKOK" -o ! -L ${MP} ]; then
                 	log "CRIT: ${MP} is not mounted"
